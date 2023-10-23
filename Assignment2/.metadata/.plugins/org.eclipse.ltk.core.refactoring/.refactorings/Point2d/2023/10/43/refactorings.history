@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.app.geometry&apos; to &apos;question4.com.app.geometry&apos;&#x0A;- Original project: &apos;Point2d&apos;&#x0A;- Original element: &apos;Point2d/src/com.app.geometry&apos;&#x0A;- Renamed element: &apos;Point2d/src/question4.com.app.geometry&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.app.geometry&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.app.geometry" name="question4.com.app.geometry" qualified="false" references="true" stamp="1698053736048" textual="false" version="1.0"/>
+</session>

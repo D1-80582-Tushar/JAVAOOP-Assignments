@@ -1,0 +1,14 @@
+package question4.com.app.geometry;
+
+public class TestPoint {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		public static void main(String[] args) {
+			// TODO Auto-generated method stub
+	        Point2d point = new Point2d(10,20);
+			System.out.println(point.getDetails());
+		}
+	}
+
+}

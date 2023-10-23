@@ -1,0 +1,34 @@
+package car;
+
+import java.util.Scanner;
+
+public class CalculateDrivingCost {
+	  public static void main(String[] args) {
+	        Scanner input = new Scanner(System.in);
+
+	        // Input the information
+	        System.out.print("Enter total miles driven per day: ");
+	        double totalMiles = input.nextDouble();
+
+	        System.out.print("Enter cost per gallon of gasoline: $");
+	        double costPerGallon = input.nextDouble();
+
+	        System.out.print("Enter average miles per gallon: ");
+	        double milesPerGallon = input.nextDouble();
+
+	        System.out.print("Enter parking fees per day: $");
+	        double parkingFees = input.nextDouble();
+
+	        System.out.print("Enter tolls per day: $");
+	        double tolls = input.nextDouble();
+
+	        // Calculate the daily driving cost
+	        double gasCost = (totalMiles / milesPerGallon) * costPerGallon;
+	        double dailyCost = gasCost + parkingFees + tolls;
+
+	        // Display the result
+	        System.out.println("Your daily driving cost is: $" + dailyCost);
+	    }
+	}
+
+
