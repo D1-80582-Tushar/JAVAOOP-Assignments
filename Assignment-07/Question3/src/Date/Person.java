@@ -24,6 +24,13 @@ public class Person implements Cloneable{
 		this.age = age;
 	}
     
+//Shallow copy only for date property
+//	public Object clone() throws CloneNotSupportedException{
+//		Person temp = (Person)super.clone();
+//		return temp;
+//	}
+	
+	//deep copy
 	public Object clone() throws CloneNotSupportedException{
 		Person temp = (Person)super.clone();
 		temp.date = (Date) this.date.clone();
