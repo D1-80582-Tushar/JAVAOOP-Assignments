@@ -2,6 +2,7 @@ package com.library;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Tester {
@@ -25,6 +26,8 @@ public class Tester {
 		// TODO Auto-generated method stub
 	
 		Collection<Book> books = new ArrayList<>();
+		Iterator<Book> e = books.iterator();
+
 		Scanner sc = new Scanner(System.in);
 		
 	    int choice;
@@ -43,22 +46,21 @@ public class Tester {
 				books.add(b);
 				break;
 			case 2://display all books
-				for (Book book : books) {
-					System.out.println(book);
+				while(e.hasNext()) {
+				 Book ele = e.next();
+				 System.out.println(ele);
 				}
 				break;
 			case 3://delete book of given id
 				System.out.println("Enter book isbn");
 				String id = sc.next();
-				Book b1=null;
-				//find book
-				for (Book book : books) {
-					if(book.getIsbn().equals(id)) // note carefully (book.getIsbn() == id) will only check for references this won't work
+				while(e.hasNext()) {
+				 Book ele = e.next();
+					if(ele.getIsbn().equals(id)) // note carefully (book.getIsbn() == id) will only check for references this won't work
 					{ 
-						 b1=book;
+						 books.remove(ele);
 					}
 				}
-				books.remove(b1);
 				break;
 			case 4://check if book exist
 				System.out.println("Enter book isbn");
