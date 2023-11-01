@@ -26,7 +26,7 @@ public class Tester {
 		// TODO Auto-generated method stub
 	
 		Collection<Book> books = new ArrayList<>();
-		Iterator<Book> e = books.iterator();
+		Iterator<Book> e = null;
 
 		Scanner sc = new Scanner(System.in);
 		
@@ -46,19 +46,22 @@ public class Tester {
 				books.add(b);
 				break;
 			case 2://display all books
+				 e = books.iterator();
 				while(e.hasNext()) {
 				 Book ele = e.next();
 				 System.out.println(ele);
 				}
+
 				break;
 			case 3://delete book of given id
 				System.out.println("Enter book isbn");
 				String id = sc.next();
+				 e = books.iterator();
 				while(e.hasNext()) {
 				 Book ele = e.next();
 					if(ele.getIsbn().equals(id)) // note carefully (book.getIsbn() == id) will only check for references this won't work
 					{ 
-						 books.remove(ele);
+						 e.remove(); //good to use iterator e in order to maintain consistency between collection and iterator
 					}
 				}
 				break;
