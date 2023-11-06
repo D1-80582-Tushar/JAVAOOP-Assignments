@@ -30,7 +30,7 @@ public class Mainq4 {
 				double num1 = sc.nextDouble();
 				System.out.println("Enter num 2");
 				double num2 = sc.nextDouble();
-				calculate(num1,num2,(x,y)->x+y);
+				calculate(num1,num2,(x,y)->x+y); 
 				break;
 			case 2:
 				System.out.println("Enter num 1");
