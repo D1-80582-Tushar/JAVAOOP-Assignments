@@ -33,6 +33,12 @@ public class CandidateDao implements AutoCloseable {
 		try {
 			if (con != null)
 				con.close();
+			    saveCandidate.close();
+			    updateCandidate.close();
+			    deleteCandidateById.close();
+			    findById.close();
+			    findAll.close();
+			    findByParty.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

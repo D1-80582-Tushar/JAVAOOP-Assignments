@@ -1,6 +1,5 @@
 package com.q1;
 
-import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Scanner;
 
