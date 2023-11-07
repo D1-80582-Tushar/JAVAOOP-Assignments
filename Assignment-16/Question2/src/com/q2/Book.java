@@ -1,8 +1,9 @@
 package com.q2;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Book implements Comparable<Book>{
+public class Book implements Comparable<Book>,Serializable{
 //	Book details: isbn(string), price(double), authorName(string), quantity(int)
 	private String isbn;
 	private double price;

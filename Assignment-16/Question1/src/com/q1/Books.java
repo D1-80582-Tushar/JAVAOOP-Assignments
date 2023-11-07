@@ -6,8 +6,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -123,24 +121,30 @@ public class Books {
    }
 	public static void saveBooks(ArrayList<Book> books) throws IOException {
 		  try(FileOutputStream fos = new FileOutputStream("book.txt")){
-			  try(ObjectOutputStream dos = new ObjectOutputStream(fos)){  
+			  try(DataOutputStream dos = new DataOutputStream(fos)){  
 				  for (Book book : books) {
-					  dos.writeObject(book);
+					  dos.writeUTF(book.getIsbn());
+					  dos.writeDouble(book.getPrice());
+					  dos.writeUTF(book.getAuthorName());
+					  dos.writeDouble(book.getQuantity());
 				  }  
 			  }			  
 		  }
 	}
 	public static void readFileBook() throws FileNotFoundException, IOException {
 		try(FileInputStream fin = new FileInputStream("book.txt")){
-			try(ObjectInputStream dis = new ObjectInputStream(fin)){
+			try(DataInputStream dis = new DataInputStream(fin)){
                 while(true) {
-                	Book b = (Book) dis.readObject();    
-                	System.out.printf("%s %.2f %s %d \n", b.getIsbn() , b.getPrice() , b.getAuthorName() , b.getQuantity());
+                	String isbn = dis.readUTF();
+                	double price = dis.readDouble();
+                	String author=dis.readUTF();
+                	double quantity = dis.readDouble();     
+                	System.out.printf("%s %.2f %s %f \n", isbn , price , author ,quantity);
                 }
 			}
 
 		}catch(Exception e) {
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 }
