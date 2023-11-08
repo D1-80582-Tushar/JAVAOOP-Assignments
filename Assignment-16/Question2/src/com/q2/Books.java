@@ -1,5 +1,7 @@
 package com.q2;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
@@ -123,26 +125,29 @@ public class Books {
    }
 	public static void saveBooks(ArrayList<Book> books) {
 		  try(FileOutputStream fos = new FileOutputStream("book2.txt")){
-			  try(ObjectOutputStream dos = new ObjectOutputStream(fos)){  
-				  for (Book book : books) {
-					  dos.writeObject(book);
-				  }  
-			  }			  
+			  try(BufferedOutputStream bos = new BufferedOutputStream(fos)){
+				  try(ObjectOutputStream dos = new ObjectOutputStream(bos)){  
+//				  for (Book book : books) { //no need to do for loop here as arraylist is serializable
+					  dos.writeObject(books);
+//				  }  
+				  }			  
+			  }
 		  }catch(Exception e) {
 			  e.printStackTrace();
 		  }
 	}
 	public static void readFileBook() throws FileNotFoundException, IOException {
-		try(FileInputStream fin = new FileInputStream("book.txt")){
-			try(ObjectInputStream dis = new ObjectInputStream(fin)){
-                while(true) {
-                	Book b = (Book) dis.readObject();    
-                	System.out.printf("%s %.2f %s %d \n", b.getIsbn() , b.getPrice() , b.getAuthorName() , b.getQuantity());
-                }
+		try(FileInputStream fin = new FileInputStream("book2.txt")){
+			try(BufferedInputStream bis = new BufferedInputStream(fin)){				
+				try(ObjectInputStream dis = new ObjectInputStream(bis)){
+					ArrayList<Book> b = new ArrayList<Book>();
+					b =  (ArrayList<Book>) dis.readObject();    
+					b.forEach(t->System.out.println(t));
+				}
 			}
 
 		}catch(Exception e) {
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 }
